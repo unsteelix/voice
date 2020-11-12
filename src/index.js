@@ -4,6 +4,7 @@ const customGenerationFunction = () => (Math.random().toString(36) + '0000000000
 
 const server_port = process.env.YOUR_PORT || process.env.PORT || 80;
 const server_host = process.env.YOUR_HOST || '0.0.0.0';
+//const server_host = 'https://rocky-river-23153.herokuapp.com'
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.get('/users/:userId', function(req, res, next){
       <script>
 
         var peer = new Peer("${userId}", {
-          host: ${server_host},
+          host: "${server_host}",
           port: ${server_port},
           path: '/peer-server',
         }); 
