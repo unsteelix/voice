@@ -2,9 +2,11 @@ import express from 'express';
 import { ExpressPeerServer } from 'peer'
 const customGenerationFunction = () => (Math.random().toString(36) + '0000000000000000000').substr(2, 16);
 
-const server_port = process.env.YOUR_PORT || process.env.PORT || 80;
-//const server_host = process.env.YOUR_HOST || '0.0.0.0';
-const server_host = 'rocky-river-23153.herokuapp.com'
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '127.0.0.1';
+//const server_host = 'rocky-river-23153.herokuapp.com'
+
+console.log('----', process.env)
 
 const app = express();
 
@@ -34,8 +36,8 @@ app.get('/users/:userId', function(req, res, next){
       <script>
 
         var peer = new Peer("${userId}", {
-          host: "${server_host}",
-          port: ${server_port},
+          host: "${HOST}",
+          port: ${PORT},
           path: '/peer-server',
         }); 
 
@@ -121,8 +123,8 @@ app.get('/users/:userId', function(req, res, next){
 
 // =======
 
-const server = app.listen(server_port, server_host, function() {
-    console.log(`Listening on port: ${server_port}, host: ${server_host}`);
+const server = app.listen(PORT, HOST, function() {
+    console.log(`Listening on port: ${PORT}, host: ${HOST}`);
 });
 
 
