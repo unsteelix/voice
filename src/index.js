@@ -33,7 +33,7 @@ app.get('/users/:userId', function(req, res, next){
       <script>
 
         var peer = new Peer("${userId}", {
-          host: 'localhost',
+          host: ${server_host},
           port: ${server_port},
           path: '/peer-server',
         }); 
@@ -121,7 +121,7 @@ app.get('/users/:userId', function(req, res, next){
 // =======
 
 const server = app.listen(server_port, server_host, function() {
-    console.log('Listening on port %d', server_port);
+    console.log(`Listening on port: ${server_port}, host: ${server_host}`);
 });
 
 
