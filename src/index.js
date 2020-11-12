@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST || '127.0.0.1';
 //const server_host = 'rocky-river-23153.herokuapp.com'
 
-console.log('----', process.env)
+//console.log('----', process.env)
 
 const app = express();
 
@@ -130,8 +130,11 @@ const server = app.listen(PORT, HOST, function() {
 
 
 const peerServer = ExpressPeerServer(server, {
+  //path: '/',
+  //generateClientId: customGenerationFunction
+  port: PORT,
   path: '/',
-  generateClientId: customGenerationFunction
+  proxied: true
 });
 
 app.use('/peer-server', peerServer);
